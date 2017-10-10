@@ -13,14 +13,12 @@ class RiotApiTest extends \TestCase
     /**
      * @var \IntegrationTester
      */
-    use DatabaseTransactions, DatabaseMigrations;
-
     protected $API;
 
     public function setUp()
     {
-        $this->API = new Api();
         parent::setUp();
+        $this->API = new Api();
     }
 
     public function tearDown()
@@ -82,8 +80,7 @@ class RiotApiTest extends \TestCase
     public function testSetChampionNameandCacheIt(){
         $championID = '222';
         $this->API->setChampionName($championID);
-
-//        $this->assertSame($this->API->getChampionName());
+        $this->assertSame($this->API->getChampionName(), "Jinx");
     }
 
     public function testRequestChampionMasterieDataShouldSetJsonAndCacheIt(){
